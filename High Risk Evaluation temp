@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Enhanced High-Risk Review Template</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 20px;
+    }
+    table {
+      border-collapse: collapse;
+      width: 100%;
+      margin-bottom: 40px;
+    }
+    th, td {
+      border: 1px solid #ccc;
+      padding: 10px;
+    }
+    th {
+      background-color: #f4f4f4;
+    }
+    input[type="text"], select {
+      width: 100%;
+    }
+    .risk-score {
+      font-weight: bold;
+      padding: 10px;
+    }
+  </style>
+</head>
+<body>
+
+<h2>1. Background Summary</h2>
+<table>
+  <tr><th>Field</th><th>Details</th></tr>
+  <tr><td>Company Name</td><td><input type="text"></td></tr>
+  <tr><td>Jurisdiction</td><td><input type="text"></td></tr>
+  <tr><td>Declared Source of Wealth</td><td><input type="text"></td></tr>
+  <tr><td>Timeframe of Wealth Accumulation</td><td><input type="text"></td></tr>
+  <tr><td>Known Links to Sanctioned Individuals</td><td><input type="text"></td></tr>
+  <tr><td>Red Flags Observed</td><td><input type="text"></td></tr>
+</table>
+
+<h2>2. Red Flag Indicators</h2>
+<table>
+  <tr><th>Indicator</th><th>Flagged?</th><th>Notes</th></tr>
+  <tr><td>Use of Straw Men or Nominees</td><td><select><option>Yes</option><option>No</option></select></td><td><input type="text"></td></tr>
+  <tr><td>Rapid or Unexplained Wealth Accumulation</td><td><select><option>Yes</option><option>No</option></select></td><td><input type="text"></td></tr>
+  <tr><td>Ties to Sanctioned Individuals or Entities</td><td><select><option>Yes</option><option>No</option></select></td><td><input type="text"></td></tr>
+  <tr><td>Use of Offshore Trusts/SPVs</td><td><select><option>Yes</option><option>No</option></select></td><td><input type="text"></td></tr>
+  <tr><td>Inconsistent or Vague SoW Documentation</td><td><select><option>Yes</option><option>No</option></select></td><td><input type="text"></td></tr>
+  <tr><td>Negative Media Coverage</td><td><select><option>Yes</option><option>No</option></select></td><td><input type="text"></td></tr>
+  <tr><td>Refusal to Provide UBO or Legal Opinion</td><td><select><option>Yes</option><option>No</option></select></td><td><input type="text"></td></tr>
+  <tr><td>Use of Complex Corporate Chains</td><td><select><option>Yes</option><option>No</option></select></td><td><input type="text"></td></tr>
+</table>
+
+<h2>3. Forensic Risk Scoring</h2>
+<table id="riskTable">
+  <tr><th>Dimension</th><th>Score (1–5)</th><th>Notes</th></tr>
+  <tr><td>Transparency of SoW</td><td><select class="score"><option>1</option><option>2</option><option>3</option><option>4</option><option>5</option></select></td><td><input type="text"></td></tr>
+  <tr><td>Sanctions Proximity</td><td><select class="score"><option>1</option><option>2</option><option>3</option><option>4</option><option>5</option></select></td><td><input type="text"></td></tr>
+  <tr><td>Reputational Risk</td><td><select class="score"><option>1</option><option>2</option><option>3</option><option>4</option><option>5</option></select></td><td><input type="text"></td></tr>
+  <tr><td>Ownership Complexity</td><td><select class="score"><option>1</option><option>2</option><option>3</option><option>4</option><option>5</option></select></td><td><input type="text"></td></tr>
+  <tr><td>Operational Risk</td><td><select class="score"><option>1</option><option>2</option><option>3</option><option>4</option><option>5</option></select></td><td><input type="text"></td></tr>
+</table>
+
+<div class="risk-score" id="totalScore">Total Score: 0</div>
+
+<h2>4. Final Recommendation</h2>
+<table>
+  <tr><th>Field</th><th>Details</th></tr>
+  <tr><td>Compliance Officer's Name</td><td><input type="text"></td></tr>
+  <tr><td>Date</td><td><input type="text"></td></tr>
+  <tr><td>Summary Recommendation</td><td><input type="text"></td></tr>
+</table>
+
+<script>
+  const scoreDropdowns = document.querySelectorAll('.score');
+  const totalScoreDisplay = document.getElementById('totalScore');
+
+  function calculateTotal() {
+    let total = 0;
+    scoreDropdowns.forEach(dropdown => {
+      total += parseInt(dropdown.value || 0);
+    });
+
+    totalScoreDisplay.innerText = `Total Score: ${total}`;
+    if (total >= 18) {
+      totalScoreDisplay.style.color = 'red';
+    } else if (total >= 10) {
+      totalScoreDisplay.style.color = 'orange';
+    } else {
+      totalScoreDisplay.style.color = 'green';
+    }
+  }
+
+  scoreDropdowns.forEach(dropdown => {
+    dropdown.addEventListener('change', calculateTotal);
+  });
+
+  calculateTotal(); // Initial load
+</script>
+
+</body>
+</html>
