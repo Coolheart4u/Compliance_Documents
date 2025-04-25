@@ -116,9 +116,10 @@
   <script>
     Reveal.initialize();
 
-    // Store the chart objects to initialize only once
+    // Store chart references
     let cryptoChart, channelChart;
 
+    // Function to initialize the Crypto Chart
     function renderCryptoChart() {
       const ctx = document.getElementById('cryptoChart').getContext('2d');
       if (!cryptoChart && ctx) {
@@ -158,6 +159,7 @@
       }
     }
 
+    // Function to initialize the Channel Chart
     function renderChannelChart() {
       const ctx2 = document.getElementById('channelChart').getContext('2d');
       if (!channelChart && ctx2) {
@@ -188,21 +190,25 @@
       }
     }
 
+    // Only render the charts once the relevant slide is visible
     Reveal.on('slidechanged', function(event) {
       const currentSlide = event.currentSlide;
-      if (currentSlide.querySelector('#cryptoChart')) {
+
+      if (currentSlide.querySelector('#cryptoChart') && !cryptoChart) {
         renderCryptoChart();
       }
-      if (currentSlide.querySelector('#channelChart')) {
+
+      if (currentSlide.querySelector('#channelChart') && !channelChart) {
         renderChannelChart();
       }
     });
 
-    // Optionally render the charts if they are in the first visible slides
+    // Optionally render charts as soon as the page is loaded
     window.addEventListener('load', () => {
       renderCryptoChart();
       renderChannelChart();
     });
+
   </script>
 </body>
 </html>
