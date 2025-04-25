@@ -31,6 +31,8 @@
     }
     canvas {
       margin-top: 20px;
+      max-width: 100%;
+      height: auto !important;
     }
     footer {
       font-size: 0.8rem;
@@ -77,13 +79,13 @@
 
       <section>
         <h2>Crypto Transactions</h2>
-        <canvas id="cryptoChart" width="600" height="400"></canvas>
+        <canvas id="cryptoChart"></canvas>
         <footer>Data derived from Europol IOCTA 2023, Chainalysis Crypto Crime Reports, U.S. DOJ 2021–2024 investigations.</footer>
       </section>
 
       <section>
         <h2>Case Types & Financial Channels</h2>
-        <canvas id="channelChart" width="600" height="400"></canvas>
+        <canvas id="channelChart"></canvas>
         <footer>Based on case studies from Financial Intelligence Units and FATF guidance reports.</footer>
       </section>
 
@@ -131,6 +133,8 @@
         }]
       },
       options: {
+        responsive: true,
+        maintainAspectRatio: false,
         scales: {
           y: {
             beginAtZero: true,
@@ -172,6 +176,8 @@
         }]
       },
       options: {
+        responsive: true,
+        maintainAspectRatio: false,
         plugins: {
           legend: {
             labels: {
