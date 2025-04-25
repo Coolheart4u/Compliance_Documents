@@ -116,12 +116,13 @@
   <script>
     Reveal.initialize();
 
+    // Store the chart objects to initialize only once
     let cryptoChart, channelChart;
 
     function renderCryptoChart() {
-      const ctx = document.getElementById('cryptoChart');
+      const ctx = document.getElementById('cryptoChart').getContext('2d');
       if (!cryptoChart && ctx) {
-        cryptoChart = new Chart(ctx.getContext('2d'), {
+        cryptoChart = new Chart(ctx, {
           type: 'bar',
           data: {
             labels: ['Bitcoin', 'Ethereum', 'Monero', 'Tether'],
@@ -158,9 +159,9 @@
     }
 
     function renderChannelChart() {
-      const ctx2 = document.getElementById('channelChart');
+      const ctx2 = document.getElementById('channelChart').getContext('2d');
       if (!channelChart && ctx2) {
-        channelChart = new Chart(ctx2.getContext('2d'), {
+        channelChart = new Chart(ctx2, {
           type: 'doughnut',
           data: {
             labels: ['Crypto Exchanges', 'Payment Platforms', 'Bank Transfers', 'Gift Cards'],
@@ -197,6 +198,7 @@
       }
     });
 
+    // Optionally render the charts if they are in the first visible slides
     window.addEventListener('load', () => {
       renderCryptoChart();
       renderChannelChart();
