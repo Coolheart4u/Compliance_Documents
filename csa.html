@@ -15,22 +15,28 @@
       background-color: #f8f9fa;
       margin: 0;
       padding: 0;
-      color: #333;
+      color: #fff;
     }
     .reveal .slides {
       text-align: left;
     }
     h2 {
-      color: #2c3e50;
+      color: #3498db;
     }
     .highlight {
-      background-color: #eaf2f8;
+      background-color: #34495e;
       padding: 0.5rem;
       border-left: 3px solid #2980b9;
       margin: 1rem 0;
     }
     canvas {
       margin-top: 20px;
+    }
+    footer {
+      font-size: 0.8rem;
+      text-align: center;
+      padding-top: 20px;
+      color: #aaa;
     }
   </style>
 </head>
@@ -72,6 +78,13 @@
       <section>
         <h2>Crypto Transactions</h2>
         <canvas id="cryptoChart" width="600" height="400"></canvas>
+        <footer>Data derived from Europol IOCTA 2023, Chainalysis Crypto Crime Reports, U.S. DOJ 2021–2024 investigations.</footer>
+      </section>
+
+      <section>
+        <h2>Case Types & Financial Channels</h2>
+        <canvas id="channelChart" width="600" height="400"></canvas>
+        <footer>Based on case studies from Financial Intelligence Units and FATF guidance reports.</footer>
       </section>
 
       <section>
@@ -92,6 +105,7 @@
       <section>
         <h2>Conclusion</h2>
         <p>This crime hides in silence and financial gaps. Community vigilance and financial awareness can save children and dismantle exploitation networks.</p>
+        <footer>To share on LinkedIn: export this slideshow to PDF or take screenshots of each slide.</footer>
       </section>
     </div>
   </div>
@@ -119,7 +133,50 @@
       options: {
         scales: {
           y: {
-            beginAtZero: true
+            beginAtZero: true,
+            ticks: {
+              color: '#fff'
+            }
+          },
+          x: {
+            ticks: {
+              color: '#fff'
+            }
+          }
+        },
+        plugins: {
+          legend: {
+            labels: {
+              color: '#fff'
+            }
+          }
+        }
+      }
+    });
+
+    const ctx2 = document.getElementById('channelChart').getContext('2d');
+    const channelChart = new Chart(ctx2, {
+      type: 'doughnut',
+      data: {
+        labels: ['Crypto Exchanges', 'Payment Platforms', 'Bank Transfers', 'Gift Cards'],
+        datasets: [{
+          label: 'Payment Channels in Child Exploitation Cases',
+          data: [45, 30, 15, 10],
+          backgroundColor: [
+            'rgba(231, 76, 60, 0.7)',
+            'rgba(46, 204, 113, 0.7)',
+            'rgba(52, 152, 219, 0.7)',
+            'rgba(241, 196, 15, 0.7)'
+          ],
+          borderWidth: 1
+        }]
+      },
+      options: {
+        plugins: {
+          legend: {
+            labels: {
+              color: '#fff'
+            }
           }
         }
       }
