@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Child Online Exploitation & Financial Systems</title>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script src="https://unpkg.com/@popperjs/core@2"></script>
+  <script src="https://unpkg.com/reveal.js/dist/reveal.js"></script>
+  <link rel="stylesheet" href="https://unpkg.com/reveal.js/dist/reveal.css">
+  <link rel="stylesheet" href="https://unpkg.com/reveal.js/dist/theme/black.css">
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: #f8f9fa;
+      margin: 0;
+      padding: 0;
+      color: #333;
+    }
+    .reveal .slides {
+      text-align: left;
+    }
+    h2 {
+      color: #2c3e50;
+    }
+    .highlight {
+      background-color: #eaf2f8;
+      padding: 0.5rem;
+      border-left: 3px solid #2980b9;
+      margin: 1rem 0;
+    }
+    canvas {
+      margin-top: 20px;
+    }
+  </style>
+</head>
+<body>
+  <div class="reveal">
+    <div class="slides">
+      <section>
+        <h1>Child Online Exploitation</h1>
+        <p>How Communities and Financial Systems Can Help</p>
+      </section>
+
+      <section>
+        <h2>Why This Matters</h2>
+        <p>Child online exploitation includes grooming, CSAM, and live abuse. Every victim is a child whose future is harmed. Communities play a vital role in prevention.</p>
+      </section>
+
+      <section>
+        <h2>Community’s Role in Prevention</h2>
+        <ul>
+          <li>Recognizing behavioral signs</li>
+          <li>Promoting digital safety education</li>
+          <li>Supporting victims and families</li>
+        </ul>
+      </section>
+
+      <section>
+        <h2>Financial System Connection</h2>
+        <p>Exploiters often use financial systems to monetize abuse, especially through crypto and micro-transactions.</p>
+        <div class="highlight">
+          <strong>Red Flags:</strong>
+          <ul>
+            <li>Frequent low-value transactions</li>
+            <li>Crypto payments and mixers</li>
+            <li>Suspicious international transfers</li>
+          </ul>
+        </div>
+      </section>
+
+      <section>
+        <h2>Crypto Transactions</h2>
+        <canvas id="cryptoChart" width="600" height="400"></canvas>
+      </section>
+
+      <section>
+        <h2>Suspicious Transaction Reports (STRs)</h2>
+        <p>STRs are essential in identifying hidden exploitation networks. Trained analysts can detect patterns and stop crimes before escalation.</p>
+      </section>
+
+      <section>
+        <h2>How We All Contribute</h2>
+        <ul>
+          <li><strong>Parents & Teachers:</strong> Online safety & awareness</li>
+          <li><strong>Tech Platforms:</strong> Moderation, reporting tools</li>
+          <li><strong>Financial Institutions:</strong> STRs, red flag detection</li>
+          <li><strong>Regulators:</strong> Stronger policies & frameworks</li>
+        </ul>
+      </section>
+
+      <section>
+        <h2>Conclusion</h2>
+        <p>This crime hides in silence and financial gaps. Community vigilance and financial awareness can save children and dismantle exploitation networks.</p>
+      </section>
+    </div>
+  </div>
+
+  <script>
+    Reveal.initialize();
+
+    const ctx = document.getElementById('cryptoChart').getContext('2d');
+    const cryptoChart = new Chart(ctx, {
+      type: 'bar',
+      data: {
+        labels: ['Bitcoin', 'Ethereum', 'Monero', 'Tether'],
+        datasets: [{
+          label: 'Usage in CSAM Transactions (%)',
+          data: [40, 25, 20, 15],
+          backgroundColor: [
+            'rgba(255, 99, 132, 0.6)',
+            'rgba(54, 162, 235, 0.6)',
+            'rgba(255, 206, 86, 0.6)',
+            'rgba(75, 192, 192, 0.6)'
+          ],
+          borderWidth: 1
+        }]
+      },
+      options: {
+        scales: {
+          y: {
+            beginAtZero: true
+          }
+        }
+      }
+    });
+  </script>
+</body>
+</html>
