@@ -4,7 +4,6 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Child Online Exploitation & Financial Systems</title>
-  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
   <script src="https://unpkg.com/@popperjs/core@2"></script>
   <script src="https://unpkg.com/reveal.js/dist/reveal.js"></script>
   <link rel="stylesheet" href="https://unpkg.com/reveal.js/dist/reveal.css">
@@ -29,11 +28,22 @@
       border-left: 3px solid #2980b9;
       margin: 1rem 0;
     }
-    canvas {
-      margin: 20px auto;
-      display: block;
+    table {
       width: 80%;
-      height: 300px;
+      margin: 20px auto;
+      border-collapse: collapse;
+    }
+    th, td {
+      padding: 10px;
+      text-align: center;
+      border: 1px solid #ddd;
+    }
+    th {
+      background-color: #2980b9;
+      color: white;
+    }
+    tr:nth-child(even) {
+      background-color: #f2f2f2;
     }
     footer {
       font-size: 0.8rem;
@@ -79,14 +89,64 @@
       </section>
 
       <section>
-        <h2>Crypto Transactions</h2>
-        <canvas id="cryptoChart"></canvas>
+        <h2>Crypto Usage in CSAM Transactions</h2>
+        <table>
+          <thead>
+            <tr>
+              <th>Cryptocurrency</th>
+              <th>Usage in CSAM Transactions (%)</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Bitcoin</td>
+              <td>40%</td>
+            </tr>
+            <tr>
+              <td>Ethereum</td>
+              <td>25%</td>
+            </tr>
+            <tr>
+              <td>Monero</td>
+              <td>20%</td>
+            </tr>
+            <tr>
+              <td>Tether</td>
+              <td>15%</td>
+            </tr>
+          </tbody>
+        </table>
         <footer>Data derived from Europol IOCTA 2023, Chainalysis Crypto Crime Reports, U.S. DOJ 2021–2024 investigations.</footer>
       </section>
 
       <section>
-        <h2>Case Types & Financial Channels</h2>
-        <canvas id="channelChart"></canvas>
+        <h2>Payment Channels in Child Exploitation Cases</h2>
+        <table>
+          <thead>
+            <tr>
+              <th>Payment Channel</th>
+              <th>Usage (%)</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Crypto Exchanges</td>
+              <td>45%</td>
+            </tr>
+            <tr>
+              <td>Payment Platforms</td>
+              <td>30%</td>
+            </tr>
+            <tr>
+              <td>Bank Transfers</td>
+              <td>15%</td>
+            </tr>
+            <tr>
+              <td>Gift Cards</td>
+              <td>10%</td>
+            </tr>
+          </tbody>
+        </table>
         <footer>Based on case studies from Financial Intelligence Units and FATF guidance reports.</footer>
       </section>
 
@@ -115,70 +175,6 @@
 
   <script>
     Reveal.initialize();
-
-    // Initialize charts on page load
-    window.addEventListener('load', () => {
-      const ctx1 = document.getElementById('cryptoChart').getContext('2d');
-      const cryptoChart = new Chart(ctx1, {
-        type: 'bar',
-        data: {
-          labels: ['Bitcoin', 'Ethereum', 'Monero', 'Tether'],
-          datasets: [{
-            label: 'Usage in CSAM Transactions (%)',
-            data: [40, 25, 20, 15],
-            backgroundColor: [
-              'rgba(255, 99, 132, 0.6)',
-              'rgba(54, 162, 235, 0.6)',
-              'rgba(255, 206, 86, 0.6)',
-              'rgba(75, 192, 192, 0.6)'
-            ],
-            borderWidth: 1
-          }]
-        },
-        options: {
-          responsive: true,
-          maintainAspectRatio: false,
-          scales: {
-            y: {
-              beginAtZero: true,
-              ticks: { color: '#fff' }
-            },
-            x: {
-              ticks: { color: '#fff' }
-            }
-          },
-          plugins: {
-            legend: { labels: { color: '#fff' } }
-          }
-        }
-      });
-
-      const ctx2 = document.getElementById('channelChart').getContext('2d');
-      const channelChart = new Chart(ctx2, {
-        type: 'doughnut',
-        data: {
-          labels: ['Crypto Exchanges', 'Payment Platforms', 'Bank Transfers', 'Gift Cards'],
-          datasets: [{
-            label: 'Payment Channels in Child Exploitation Cases',
-            data: [45, 30, 15, 10],
-            backgroundColor: [
-              'rgba(231, 76, 60, 0.7)',
-              'rgba(46, 204, 113, 0.7)',
-              'rgba(52, 152, 219, 0.7)',
-              'rgba(241, 196, 15, 0.7)'
-            ],
-            borderWidth: 1
-          }]
-        },
-        options: {
-          responsive: true,
-          maintainAspectRatio: false,
-          plugins: {
-            legend: { labels: { color: '#fff' } }
-          }
-        }
-      });
-    });
   </script>
 </body>
 </html>
