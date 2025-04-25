@@ -32,8 +32,8 @@
     canvas {
       margin: 20px auto;
       display: block;
-      max-width: 90%;
-      height: 300px !important;
+      width: 80%;
+      height: 300px;
     }
     footer {
       font-size: 0.8rem;
@@ -116,99 +116,69 @@
   <script>
     Reveal.initialize();
 
-    // Store chart references
-    let cryptoChart, channelChart;
-
-    // Function to initialize the Crypto Chart
-    function renderCryptoChart() {
-      const ctx = document.getElementById('cryptoChart').getContext('2d');
-      if (!cryptoChart && ctx) {
-        cryptoChart = new Chart(ctx, {
-          type: 'bar',
-          data: {
-            labels: ['Bitcoin', 'Ethereum', 'Monero', 'Tether'],
-            datasets: [{
-              label: 'Usage in CSAM Transactions (%)',
-              data: [40, 25, 20, 15],
-              backgroundColor: [
-                'rgba(255, 99, 132, 0.6)',
-                'rgba(54, 162, 235, 0.6)',
-                'rgba(255, 206, 86, 0.6)',
-                'rgba(75, 192, 192, 0.6)'
-              ],
-              borderWidth: 1
-            }]
-          },
-          options: {
-            responsive: true,
-            maintainAspectRatio: false,
-            scales: {
-              y: {
-                beginAtZero: true,
-                ticks: { color: '#fff' }
-              },
-              x: {
-                ticks: { color: '#fff' }
-              }
-            },
-            plugins: {
-              legend: { labels: { color: '#fff' } }
-            }
-          }
-        });
-      }
-    }
-
-    // Function to initialize the Channel Chart
-    function renderChannelChart() {
-      const ctx2 = document.getElementById('channelChart').getContext('2d');
-      if (!channelChart && ctx2) {
-        channelChart = new Chart(ctx2, {
-          type: 'doughnut',
-          data: {
-            labels: ['Crypto Exchanges', 'Payment Platforms', 'Bank Transfers', 'Gift Cards'],
-            datasets: [{
-              label: 'Payment Channels in Child Exploitation Cases',
-              data: [45, 30, 15, 10],
-              backgroundColor: [
-                'rgba(231, 76, 60, 0.7)',
-                'rgba(46, 204, 113, 0.7)',
-                'rgba(52, 152, 219, 0.7)',
-                'rgba(241, 196, 15, 0.7)'
-              ],
-              borderWidth: 1
-            }]
-          },
-          options: {
-            responsive: true,
-            maintainAspectRatio: false,
-            plugins: {
-              legend: { labels: { color: '#fff' } }
-            }
-          }
-        });
-      }
-    }
-
-    // Only render the charts once the relevant slide is visible
-    Reveal.on('slidechanged', function(event) {
-      const currentSlide = event.currentSlide;
-
-      if (currentSlide.querySelector('#cryptoChart') && !cryptoChart) {
-        renderCryptoChart();
-      }
-
-      if (currentSlide.querySelector('#channelChart') && !channelChart) {
-        renderChannelChart();
-      }
-    });
-
-    // Optionally render charts as soon as the page is loaded
+    // Initialize charts on page load
     window.addEventListener('load', () => {
-      renderCryptoChart();
-      renderChannelChart();
-    });
+      const ctx1 = document.getElementById('cryptoChart').getContext('2d');
+      const cryptoChart = new Chart(ctx1, {
+        type: 'bar',
+        data: {
+          labels: ['Bitcoin', 'Ethereum', 'Monero', 'Tether'],
+          datasets: [{
+            label: 'Usage in CSAM Transactions (%)',
+            data: [40, 25, 20, 15],
+            backgroundColor: [
+              'rgba(255, 99, 132, 0.6)',
+              'rgba(54, 162, 235, 0.6)',
+              'rgba(255, 206, 86, 0.6)',
+              'rgba(75, 192, 192, 0.6)'
+            ],
+            borderWidth: 1
+          }]
+        },
+        options: {
+          responsive: true,
+          maintainAspectRatio: false,
+          scales: {
+            y: {
+              beginAtZero: true,
+              ticks: { color: '#fff' }
+            },
+            x: {
+              ticks: { color: '#fff' }
+            }
+          },
+          plugins: {
+            legend: { labels: { color: '#fff' } }
+          }
+        }
+      });
 
+      const ctx2 = document.getElementById('channelChart').getContext('2d');
+      const channelChart = new Chart(ctx2, {
+        type: 'doughnut',
+        data: {
+          labels: ['Crypto Exchanges', 'Payment Platforms', 'Bank Transfers', 'Gift Cards'],
+          datasets: [{
+            label: 'Payment Channels in Child Exploitation Cases',
+            data: [45, 30, 15, 10],
+            backgroundColor: [
+              'rgba(231, 76, 60, 0.7)',
+              'rgba(46, 204, 113, 0.7)',
+              'rgba(52, 152, 219, 0.7)',
+              'rgba(241, 196, 15, 0.7)'
+            ],
+            borderWidth: 1
+          }]
+        },
+        options: {
+          responsive: true,
+          maintainAspectRatio: false,
+          plugins: {
+            legend: { labels: { color: '#fff' } }
+          }
+        }
+      });
+    });
   </script>
 </body>
 </html>
