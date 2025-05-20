@@ -1,0 +1,79 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>EU 17th Sanctions Package - Full Entity Listing</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      line-height: 1.6;
+      padding: 40px;
+      max-width: 900px;
+      margin: auto;
+    }
+    .tooltip {
+      border-bottom: 1px dotted #000;
+      cursor: help;
+      position: relative;
+    }
+    .tooltip:hover::after {
+      content: attr(data-tooltip);
+      position: absolute;
+      left: 0;
+      top: 120%;
+      background: #222;
+      color: #fff;
+      padding: 6px 10px;
+      border-radius: 4px;
+      white-space: pre-wrap;
+      z-index: 100;
+      width: max-content;
+      max-width: 400px;
+    }
+  </style>
+</head>
+<body>
+
+<h2>🚨 EU 17th Sanctions Package: Full Sanctioned Names</h2>
+
+<h3>🛢 Shadow Fleet & Oil</h3>
+<ul>
+  <li><span class="tooltip" data-tooltip="Russian state oil company">Surgutneftegaz</span></li>
+  <li><span class="tooltip" data-tooltip="Shipping arm of Litasco, based in Dubai">Eiger Shipping DMCC</span></li>
+  <li><span class="tooltip" data-tooltip="Insurance arm involved in shadow shipping">Insurance Joint Stock Company “VSK”</span></li>
+  <li><span class="tooltip" data-tooltip="UAE (2): Azu International FZE, Oilex Terminals; Turkey: Sabra Trading; Hong Kong: Future Era Shipping">Shadow fleet management firms</span></li>
+</ul>
+
+<h3>💣 Military Industrial Complex</h3>
+<ul>
+  <li><span class="tooltip" data-tooltip="China: Chengdu Tool Research Institute, Sichuan Tianyi Aviation Technology, Wuhan Aoqun">Chinese machine tool providers</span></li>
+  <li><span class="tooltip" data-tooltip="China: Guangzhou Ausay Technology, Xi’an Aerospace Huayang, Shanghai Yixun">Chinese drone component suppliers</span></li>
+  <li><span class="tooltip" data-tooltip="Belarus: Belspetsvneshtechnika">Belarus military exporter</span></li>
+  <li><span class="tooltip" data-tooltip="Israel: SK Engineering Ltd">Israeli supplier to Russian military</span></li>
+  <li><span class="tooltip" data-tooltip="Russian gold mining company">Petropavlovsk</span></li>
+  <li><span class="tooltip" data-tooltip="Turkey: Makina ve Kimya, Teknorot, Hidrokom; Vietnam: Hanoi Machinery, VTech; UAE: TechnoPower, Al Mazrouei Group; Uzbekistan: Uztech; Serbia: Jugoimport-SDPR">Entities under stricter dual-use export rules</span></li>
+</ul>
+
+<h3>🌍 Hybrid Threats</h3>
+<ul>
+  <li><span class="tooltip" data-tooltip="Turkey: Mediahaber">Turkish media entity</span></li>
+  <li><span class="tooltip" data-tooltip="UK: Inferno Hosting Ltd">UK web hosting firm</span></li>
+  <li><span class="tooltip" data-tooltip="Moldova: Ion Ceban, Victor Juc">Moldovan individuals</span></li>
+  <li><span class="tooltip" data-tooltip="Russia: RIA FAN (News Agency), Foundation for National Values Protection (NGO)">Russian Africa-linked outlets</span></li>
+</ul>
+
+<h3>⚖️ Chemical Weapons & Human Rights</h3>
+<ul>
+  <li><span class="tooltip" data-tooltip="Russia: ROSTEC subsidiaries producing riot control gas">Riot control gas producers</span></li>
+  <li><span class="tooltip" data-tooltip="Judges and prosecutors involved in Alexei Navalny's trial and sentencing">20 Russian legal officials</span></li>
+  <li><span class="tooltip" data-tooltip="Russian individuals responsible for abuses in occupied Ukraine">8 other human rights violators</span></li>
+</ul>
+
+<p><strong>Total newly listed: 75 entities and individuals.</strong></p>
+<p><strong>Total sanctioned across all packages: Over 2,400.</strong></p>
+
+<p>#Sanctions #EU #Russia #Oil #Military #HumanRights #Geopolitics #Compliance</p>
+
+</body>
+</html>
