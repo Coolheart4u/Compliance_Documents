@@ -2,187 +2,119 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Real Estate Compliance Checklist</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Compliance Issues in Financial Statements</title>
   <style>
-    body { font-family: Arial, sans-serif; margin: 20px; background: #f4f4f4; }
-    h1, h2 { color: #2c3e50; }
-    table { width: 100%; border-collapse: collapse; margin-bottom: 20px; }
-    th, td { border: 1px solid #ccc; padding: 10px; }
-    th { background: #ecf0f1; }
-    textarea { width: 95%; height: 50px; }
-    input[type="checkbox"] { transform: scale(1.3); }
-    .button-area { margin: 20px 0; }
-    button { padding: 10px 20px; font-size: 14px; margin-right: 10px; }
-    input[type="number"] { width: 100px; }
-    .ratio-result { font-weight: bold; color: #2980b9; }
+    body { font-family: Arial, sans-serif; margin: 20px; line-height: 1.6; }
+    h1, h2, h3 { color: #2c3e50; }
+    ul { margin-left: 20px; }
+    a { color: #2980b9; text-decoration: none; }
+    a:hover { text-decoration: underline; }
+    table { width: 100%; border-collapse: collapse; margin: 20px 0; }
+    th, td { border: 1px solid #ccc; padding: 10px; text-align: left; }
+    th { background-color: #f5f5f5; }
+    code { background-color: #f0f0f0; padding: 2px 4px; border-radius: 4px; }
   </style>
 </head>
 <body>
+  <h1>Compliance Issues in Financial Statements: Resources & Examples</h1>
 
-<h1>📋 Real Estate Investment Compliance Checklist</h1>
-<h2>🏢 Company Owned by 7 Entities (~20% Each)</h2>
+  <h2>1. Regulatory & Standards-Based Resources</h2>
+  <h3>U.S. GAAP & SEC Filings</h3>
+  <ul>
+    <li><a href="https://www.sec.gov/edgar.shtml" target="_blank">SEC’s EDGAR Database</a> - Access 10-K, 10-Q, 8-K filings, auditor notes, and restatements.</li>
+    <li><a href="https://asc.fasb.org/" target="_blank">FASB Accounting Standards Codification</a> - Authoritative source for U.S. GAAP.</li>
+  </ul>
 
-<div class="button-area">
-  <button onclick="saveChecklist()">💾 Save Progress</button>
-  <button onclick="loadChecklist()">📂 Load Saved</button>
-  <button onclick="exportChecklist()">📤 Download as JSON</button>
-</div>
+  <h3>IFRS Standards (Europe & Global)</h3>
+  <ul>
+    <li><a href="https://www.ifrs.org" target="_blank">IFRS Foundation</a> - Full access to international accounting standards and examples.</li>
+    <li><a href="https://www.esma.europa.eu/databases-library/interactive-single-rulebook" target="_blank">ESMA - Interactive Single Rulebook</a> - EU guidance on IFRS application.</li>
+  </ul>
 
-<!-- SECTION TEMPLATE -->
-<script>
-  const sections = {
-    "Corporate Structure & Ownership Disclosure": [
-      "Shareholding structure disclosed (ownership %)",
-      "Related-party transactions identified",
-      "Voting rights aligned with ownership"
-    ],
-    "Real Estate Financial Reporting": [
-      "Valuation method disclosed and consistent",
-      "Rental income properly reported",
-      "Asset revaluations supported"
-    ],
-    "Regulatory & Tax Compliance": [
-      "AML/KYC for capital inflows complete",
-      "Tax filings accurate",
-      "Zoning/legal risks disclosed"
-    ],
-    "Key Financial Ratios & Red Flags": [
-      "Debt-to-equity ratio reasonable",
-      "ROA monitored",
-      "Cash flow aligns with reported revenue"
-    ],
-    "Governance & Controls": [
-      "Board control shared among owners",
-      "Expenditure approval documented",
-      "Conflict of interest mitigated"
-    ],
-    "Audit Report & Notes": [
-      "Audit opinion reviewed",
-      "Key audit matters addressed",
-      "Contingent liabilities disclosed"
-    ],
-    "Red Flags": [
-      "Unclear intercompany transactions",
-      "Tenant defaults or late payments",
-      "Hidden impairments or valuation swings"
-    ]
-  };
+  <h2>2. Practical Guides with Real Examples</h2>
+  <ul>
+    <li><strong>Book:</strong> <em>Financial Shenanigans</em> by Howard Schilit - Real-world earnings manipulation cases.</li>
+    <li><strong>Manual:</strong> PwC's <a href="https://inform.pwc.com/" target="_blank">Manual of Accounting (IFRS or GAAP)</a></li>
+    <li><strong>SEC Comment Letters:</strong> Found via <a href="https://www.sec.gov/" target="_blank">SEC Search</a> - Issues like improper revenue recognition.</li>
+  </ul>
+  <p><strong>Example:</strong> A company using bill-and-hold arrangements without satisfying IFRS 15's control transfer requirements could face compliance issues.</p>
 
-  window.onload = () => {
-    const container = document.createElement('div');
-    for (const [section, items] of Object.entries(sections)) {
-      const h2 = document.createElement('h2');
-      h2.textContent = section;
-      container.appendChild(h2);
+  <h2>3. Red Flag Checklists & Tools</h2>
+  <ul>
+    <li><a href="https://www.aicpa.org" target="_blank">AICPA Audit Guides</a> - Include industry-specific compliance checklists.</li>
+    <li><a href="https://www.calcbench.com/" target="_blank">Calcbench</a> - Offers anomaly detection in SEC filings.</li>
+    <li><a href="https://www.xbrl.org" target="_blank">XBRL Analytics</a> - Use XBRL tags to detect irregularities.</li>
+  </ul>
+  <p><strong>Example:</strong> XBRL analysis revealing off-balance sheet leases not discussed in MD&A.</p>
 
-      const table = document.createElement('table');
-      const header = document.createElement('tr');
-      header.innerHTML = "<th>✔</th><th>Check</th><th>Comments</th>";
-      table.appendChild(header);
+  <h2>4. Common Compliance Issues Table</h2>
+  <table>
+    <thead>
+      <tr>
+        <th>Area</th>
+        <th>Example Compliance Issue</th>
+        <th>Example Case</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Revenue Recognition</td>
+        <td>Premature revenue booking</td>
+        <td>Company X booked revenue before shipment (violates IFRS 15)</td>
+      </tr>
+      <tr>
+        <td>Expense Capitalization</td>
+        <td>Capitalizing R&D incorrectly</td>
+        <td>Startup Y capitalized software R&D without meeting IAS 38 criteria</td>
+      </tr>
+      <tr>
+        <td>Off-Balance Sheet Items</td>
+        <td>Hidden leasing obligations</td>
+        <td>Retailer Z failed to report operating leases under IFRS 16</td>
+      </tr>
+      <tr>
+        <td>Related-Party Transactions</td>
+        <td>Undisclosed sales to CEO’s firm</td>
+        <td>Company A didn’t disclose related-party sales under IAS 24</td>
+      </tr>
+      <tr>
+        <td>Segment Reporting</td>
+        <td>Aggregating unrelated businesses</td>
+        <td>Company B grouped tech and real estate divisions under one segment</td>
+      </tr>
+      <tr>
+        <td>Going Concern</td>
+        <td>Omitting liquidity risks</td>
+        <td>Company C failed to disclose cash flow concerns in footnotes</td>
+      </tr>
+      <tr>
+        <td>Inventory Valuation</td>
+        <td>Using outdated or inflated costs</td>
+        <td>Manufacturer D reported inventory at pre-obsolescence values</td>
+      </tr>
+      <tr>
+        <td>Internal Controls</td>
+        <td>Material weakness not disclosed</td>
+        <td>Company E ignored auditor’s warning of weak financial controls</td>
+      </tr>
+    </tbody>
+  </table>
 
-      items.forEach((item, i) => {
-        const row = document.createElement('tr');
-        row.innerHTML = `
-          <td><input type="checkbox" id="${section}-${i}-check"></td>
-          <td>${item}</td>
-          <td><textarea id="${section}-${i}-note"></textarea></td>
-        `;
-        table.appendChild(row);
-      });
-      container.appendChild(table);
-    }
-    document.body.appendChild(container);
-    loadChecklist();
-  };
+  <h2>5. Is Using 2022 Financials for Investment Evaluation OK?</h2>
+  <p><strong>Generally not OK</strong> unless you're doing historical analysis. For investment, use latest data (2023 or TTM).</p>
+  <ul>
+    <li>Markets changed due to inflation, interest rates, and geopolitical events.</li>
+    <li>Post-COVID structural shifts in operations and debt levels.</li>
+    <li>Use supplementary data: earnings calls, press releases, analyst updates.</li>
+  </ul>
+  <p><strong>Tip:</strong> Get recent EU financials via:</p>
+  <ul>
+    <li><a href="https://register.consob.it/" target="_blank">CONSOB (Italy)</a> – Financial reports of Italian listed companies</li>
+    <li><a href="https://www.bundesanzeiger.de/" target="_blank">Bundesanzeiger (Germany)</a> – Official German company filings</li>
+    <li><a href="https://beta.companieshouse.gov.uk/" target="_blank">UK Companies House</a> – Free access to UK filings</li>
+  </ul>
 
-  function saveChecklist() {
-    const data = {};
-    Object.entries(sections).forEach(([section, items]) => {
-      items.forEach((item, i) => {
-        data[`${section}-${i}`] = {
-          check: document.getElementById(`${section}-${i}-check`).checked,
-          note: document.getElementById(`${section}-${i}-note`).value
-        };
-      });
-    });
-    localStorage.setItem("realEstateCompliance", JSON.stringify(data));
-    alert("Checklist saved locally!");
-  }
-
-  function loadChecklist() {
-    const data = JSON.parse(localStorage.getItem("realEstateCompliance") || "{}");
-    Object.keys(data).forEach(key => {
-      const { check, note } = data[key];
-      if (document.getElementById(`${key}-check`)) {
-        document.getElementById(`${key}-check`).checked = check;
-      }
-      if (document.getElementById(`${key}-note`)) {
-        document.getElementById(`${key}-note`).value = note;
-      }
-    });
-  }
-
-  function exportChecklist() {
-    const data = {};
-    Object.entries(sections).forEach(([section, items]) => {
-      data[section] = items.map((item, i) => ({
-        item,
-        check: document.getElementById(`${section}-${i}-check`).checked,
-        note: document.getElementById(`${section}-${i}-note`).value
-      }));
-    });
-
-    const blob = new Blob([JSON.stringify(data, null, 2)], {type: "application/json"});
-    const url = URL.createObjectURL(blob);
-    const a = document.createElement("a");
-    a.href = url;
-    a.download = "compliance_checklist.json";
-    a.click();
-    URL.revokeObjectURL(url);
-  }
-</script>
-
-<!-- RATIO CALCULATOR -->
-<h2>📈 Financial Ratio Calculator</h2>
-<table>
-  <tr>
-    <th>Ratio</th>
-    <th>Inputs</th>
-    <th>Result</th>
-  </tr>
-  <tr>
-    <td>Debt-to-Equity</td>
-    <td>
-      Total Debt: <input type="number" id="debt" step="0.01"> <br>
-      Shareholder Equity: <input type="number" id="equity" step="0.01">
-    </td>
-    <td class="ratio-result" id="deDebtEquity">—</td>
-  </tr>
-  <tr>
-    <td>Return on Assets (ROA)</td>
-    <td>
-      Net Income: <input type="number" id="netIncome" step="0.01"> <br>
-      Total Assets: <input type="number" id="assets" step="0.01">
-    </td>
-    <td class="ratio-result" id="deROA">—</td>
-  </tr>
-</table>
-<button onclick="calculateRatios()">🔢 Calculate Ratios</button>
-
-<script>
-  function calculateRatios() {
-    const debt = parseFloat(document.getElementById("debt").value);
-    const equity = parseFloat(document.getElementById("equity").value);
-    const netIncome = parseFloat(document.getElementById("netIncome").value);
-    const assets = parseFloat(document.getElementById("assets").value);
-
-    const dte = (debt && equity) ? (debt / equity).toFixed(2) : "—";
-    const roa = (netIncome && assets) ? ((netIncome / assets) * 100).toFixed(2) + "%" : "—";
-
-    document.getElementById("deDebtEquity").textContent = dte;
-    document.getElementById("deROA").textContent = roa;
-  }
-</script>
-
+ 
 </body>
 </html>
