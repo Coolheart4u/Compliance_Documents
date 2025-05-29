@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Real Estate Compliance Checklist</title>
+  <style>
+    body { font-family: Arial, sans-serif; margin: 20px; background: #f4f4f4; }
+    h1, h2 { color: #2c3e50; }
+    table { width: 100%; border-collapse: collapse; margin-bottom: 20px; }
+    th, td { border: 1px solid #ccc; padding: 10px; }
+    th { background: #ecf0f1; }
+    textarea { width: 95%; height: 50px; }
+    input[type="checkbox"] { transform: scale(1.3); }
+    .button-area { margin: 20px 0; }
+    button { padding: 10px 20px; font-size: 14px; margin-right: 10px; }
+    input[type="number"] { width: 100px; }
+    .ratio-result { font-weight: bold; color: #2980b9; }
+  </style>
+</head>
+<body>
+
+<h1>📋 Real Estate Investment Compliance Checklist</h1>
+<h2>🏢 Company Owned by 7 Entities (~20% Each)</h2>
+
+<div class="button-area">
+  <button onclick="saveChecklist()">💾 Save Progress</button>
+  <button onclick="loadChecklist()">📂 Load Saved</button>
+  <button onclick="exportChecklist()">📤 Download as JSON</button>
+</div>
+
+<!-- SECTION TEMPLATE -->
+<script>
+  const sections = {
+    "Corporate Structure & Ownership Disclosure": [
+      "Shareholding structure disclosed (ownership %)",
+      "Related-party transactions identified",
+      "Voting rights aligned with ownership"
+    ],
+    "Real Estate Financial Reporting": [
+      "Valuation method disclosed and consistent",
+      "Rental income properly reported",
+      "Asset revaluations supported"
+    ],
+    "Regulatory & Tax Compliance": [
+      "AML/KYC for capital inflows complete",
+      "Tax filings accurate",
+      "Zoning/legal risks disclosed"
+    ],
+    "Key Financial Ratios & Red Flags": [
+      "Debt-to-equity ratio reasonable",
+      "ROA monitored",
+      "Cash flow aligns with reported revenue"
+    ],
+    "Governance & Controls": [
+      "Board control shared among owners",
+      "Expenditure approval documented",
+      "Conflict of interest mitigated"
+    ],
+    "Audit Report & Notes": [
+      "Audit opinion reviewed",
+      "Key audit matters addressed",
+      "Contingent liabilities disclosed"
+    ],
+    "Red Flags": [
+      "Unclear intercompany transactions",
+      "Tenant defaults or late payments",
+      "Hidden impairments or valuation swings"
+    ]
+  };
+
+  window.onload = () => {
+    const container = document.createElement('div');
+    for (const [section, items] of Object.entries(sections)) {
+      const h2 = document.createElement('h2');
+      h2.textContent = section;
+      container.appendChild(h2);
+
+      const table = document.createElement('table');
+      const header = document.createElement('tr');
+      header.innerHTML = "<th>✔</th><th>Check</th><th>Comments</th>";
+      table.appendChild(header);
+
+      items.forEach((item, i) => {
+        const row = document.createElement('tr');
+        row.innerHTML = `
+          <td><input type="checkbox" id="${section}-${i}-check"></td>
+          <td>${item}</td>
+          <td><textarea id="${section}-${i}-note"></textarea></td>
+        `;
+        table.appendChild(row);
+      });
+      container.appendChild(table);
+    }
+    document.body.appendChild(container);
+    loadChecklist();
+  };
+
+  function saveChecklist() {
+    const data = {};
+    Object.entries(sections).forEach(([section, items]) => {
+      items.forEach((item, i) => {
+        data[`${section}-${i}`] = {
+          check: document.getElementById(`${section}-${i}-check`).checked,
+          note: document.getElementById(`${section}-${i}-note`).value
+        };
+      });
+    });
+    localStorage.setItem("realEstateCompliance", JSON.stringify(data));
+    alert("Checklist saved locally!");
+  }
+
+  function loadChecklist() {
+    const data = JSON.parse(localStorage.getItem("realEstateCompliance") || "{}");
+    Object.keys(data).forEach(key => {
+      const { check, note } = data[key];
+      if (document.getElementById(`${key}-check`)) {
+        document.getElementById(`${key}-check`).checked = check;
+      }
+      if (document.getElementById(`${key}-note`)) {
+        document.getElementById(`${key}-note`).value = note;
+      }
+    });
+  }
+
+  function exportChecklist() {
+    const data = {};
+    Object.entries(sections).forEach(([section, items]) => {
+      data[section] = items.map((item, i) => ({
+        item,
+        check: document.getElementById(`${section}-${i}-check`).checked,
+        note: document.getElementById(`${section}-${i}-note`).value
+      }));
+    });
+
+    const blob = new Blob([JSON.stringify(data, null, 2)], {type: "application/json"});
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement("a");
+    a.href = url;
+    a.download = "compliance_checklist.json";
+    a.click();
+    URL.revokeObjectURL(url);
+  }
+</script>
+
+<!-- RATIO CALCULATOR -->
+<h2>📈 Financial Ratio Calculator</h2>
+<table>
+  <tr>
+    <th>Ratio</th>
+    <th>Inputs</th>
+    <th>Result</th>
+  </tr>
+  <tr>
+    <td>Debt-to-Equity</td>
+    <td>
+      Total Debt: <input type="number" id="debt" step="0.01"> <br>
+      Shareholder Equity: <input type="number" id="equity" step="0.01">
+    </td>
+    <td class="ratio-result" id="deDebtEquity">—</td>
+  </tr>
+  <tr>
+    <td>Return on Assets (ROA)</td>
+    <td>
+      Net Income: <input type="number" id="netIncome" step="0.01"> <br>
+      Total Assets: <input type="number" id="assets" step="0.01">
+    </td>
+    <td class="ratio-result" id="deROA">—</td>
+  </tr>
+</table>
+<button onclick="calculateRatios()">🔢 Calculate Ratios</button>
+
+<script>
+  function calculateRatios() {
+    const debt = parseFloat(document.getElementById("debt").value);
+    const equity = parseFloat(document.getElementById("equity").value);
+    const netIncome = parseFloat(document.getElementById("netIncome").value);
+    const assets = parseFloat(document.getElementById("assets").value);
+
+    const dte = (debt && equity) ? (debt / equity).toFixed(2) : "—";
+    const roa = (netIncome && assets) ? ((netIncome / assets) * 100).toFixed(2) + "%" : "—";
+
+    document.getElementById("deDebtEquity").textContent = dte;
+    document.getElementById("deROA").textContent = roa;
+  }
+</script>
+
+</body>
+</html>
